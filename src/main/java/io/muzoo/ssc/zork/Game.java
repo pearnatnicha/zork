@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Game {
 
+    public boolean started = false;
+
     private GameOutput output = new GameOutput();
 
     private CommandParser commandParser = new CommandParser();
@@ -18,7 +20,10 @@ public class Game {
             List<String> words = commandParser.parse(s);
             Command command = CommandFactory.get(words.get(0));
             if (command != null) {
-                command.execute(this, words.subList(1, words.size()));
+                command.execute(this, words.subList(1, words.size()), started);
+                if (command.getCommand() == "play"){
+                    started = true;
+                }
             }
         }
     }
