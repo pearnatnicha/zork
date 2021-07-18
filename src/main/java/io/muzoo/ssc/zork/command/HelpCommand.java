@@ -15,7 +15,7 @@ public class HelpCommand implements Command{
 
     @Override
     public int startedGame() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -24,13 +24,13 @@ public class HelpCommand implements Command{
     }
 
     @Override
-    public void execute(Game game, List<String> args, Boolean started) {
+    public void execute(Game game, List<String> args) {
         for (int i=0; i<CommandFactory.getAllCommands().size(); i++){
             String eachStringCommand = CommandFactory.getAllCommands().get(i);
             Command eachCommand = CommandFactory.get(eachStringCommand);
-            if (started == false && (eachCommand.startedGame() == 0 || eachCommand.startedGame() == 2)){
+            if (game.getStart() == false && eachCommand.startedGame() == 0){
                 game.getOutput().println(eachStringCommand);
-            }else if (started == true && (eachCommand.startedGame() == 1 || eachCommand.startedGame() == 2)){
+            }else if (game.getStart() == true && eachCommand.startedGame() == 1){
                 game.getOutput().println(eachStringCommand);
             }
 

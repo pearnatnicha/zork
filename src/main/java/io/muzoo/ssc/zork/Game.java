@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
+    public Player player = new Player();
 
     public boolean started = false;
 
@@ -20,12 +21,38 @@ public class Game {
             List<String> words = commandParser.parse(s);
             Command command = CommandFactory.get(words.get(0));
             if (command != null) {
-                command.execute(this, words.subList(1, words.size()), started);
-                if (command.getCommand() == "play"){
-                    started = true;
+                if (useCommand(command) == true){
+                    command.execute(this, words.subList(1, words.size()));
+
+                }
+                else{
+                    System.out.println("Unable to use this command");
                 }
             }
         }
+    }
+
+    public boolean useCommand(Command eachCommand){
+        if (getStart() == false && eachCommand.startedGame() == 1){
+            return false;
+        }else if (getStart() == true && eachCommand.startedGame() == 0){
+//            System.out.println("Unable to use this command");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public boolean getStart(){
+        return started;
+    }
+
+    public void setStart(boolean started){
+        this.started = started;
+    }
+
+    public int getPlayerInfo(){
+        return player.HP;
     }
 
     public GameOutput getOutput() {

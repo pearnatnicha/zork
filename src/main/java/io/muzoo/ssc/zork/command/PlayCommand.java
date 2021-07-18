@@ -23,7 +23,8 @@ public class PlayCommand implements Command{
     }
 
     @Override
-    public void execute(Game game, List<String> args, Boolean started) {
+    public void execute(Game game, List<String> args) {
+        game.setStart(true);
         game.getOutput().println("You are in front of the room");
     }
 }

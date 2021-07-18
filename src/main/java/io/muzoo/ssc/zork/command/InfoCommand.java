@@ -1,11 +1,11 @@
 package io.muzoo.ssc.zork.command;
 
 import io.muzoo.ssc.zork.Game;
+import io.muzoo.ssc.zork.Player;
 
 import java.util.List;
 
-public class ExitCommand implements Command{
-
+public class InfoCommand implements Command{
     @Override
     public int numArgs() {
         return 0;
@@ -13,17 +13,17 @@ public class ExitCommand implements Command{
 
     @Override
     public int startedGame() {
-        return 0;
+        return 1;
     }
 
     @Override
     public String getCommand() {
-        return "exit";
+        return "info";
     }
 
     @Override
     public void execute(Game game, List<String> args) {
-        game.getOutput().println("Game exit");
-        game.exit();
+        game.getOutput().println(Integer.toString(game.getPlayerInfo()));
+        game.getOutput().println("room info");
     }
 }

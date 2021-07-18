@@ -8,9 +8,9 @@ public interface Command {
 
     int numArgs();
 
-    int startedGame(); // 0=before play, 1=after play, 2=both, 3=none
+    int startedGame(); // 0=before play, 1=after play, 2=none
 
     String getCommand();
 
-    void execute(Game game, List<String> args, Boolean started);
+    void execute(Game game, List<String> args);
 }
