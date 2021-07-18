@@ -55,6 +55,10 @@ public class Game {
         return player.HP;
     }
 
+//    public int getMonsterInfo(){
+//        return
+//    }
+
     public GameOutput getOutput() {
         return output;
     }

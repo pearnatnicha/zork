@@ -25,4 +25,10 @@ public class Monster {
     public int monsterAttack(){
         return attackPower;
     }
+
+    public int getMonsterHP(){
+        return HP;
+    }
+
+
 }
