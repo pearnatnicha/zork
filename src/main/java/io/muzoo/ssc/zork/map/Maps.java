@@ -16,4 +16,7 @@ public interface Maps {
 
     public void setItemToNull();
 
+    public int getRoomNum(Room room);
+
+    public boolean setNewRoom(String direction);
 }

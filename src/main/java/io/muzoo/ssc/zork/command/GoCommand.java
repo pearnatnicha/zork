@@ -23,8 +23,6 @@ public class GoCommand implements Command{
     @Override
     public void execute(Game game, List<String> args) {
         //if next room exist
-        game.getOutput().println("enter room...");
-        // else
-        game.getOutput().println("no room exist");
+        game.move(args.get(0));
     }
 }

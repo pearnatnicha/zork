@@ -33,6 +33,6 @@ public class PlayCommand implements Command{
             }
         }
         game.setStart(true);
-        game.getOutput().println("You are in front of the room");
+        game.getOutput().println("You are here inside the room");
     }
 }

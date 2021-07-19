@@ -62,4 +62,8 @@ public class Room {
         item = null;
     }
 
+    public String getRoomName(){
+        return roomName;
+    }
+
 }

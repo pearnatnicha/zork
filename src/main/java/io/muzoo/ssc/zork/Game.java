@@ -99,6 +99,11 @@ public class Game {
         maps.setItemToNull();
     }
 
+    public void move(String direction){
+        if (maps.setNewRoom(direction) == false){
+            getOutput().println("No doors to enter");
+        }
+    }
 
     public void exit() {
         System.exit(0);
