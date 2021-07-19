@@ -1,6 +1,9 @@
 package io.muzoo.ssc.zork;
 
 import io.muzoo.ssc.zork.command.Command;
+import io.muzoo.ssc.zork.items.Item;
+import io.muzoo.ssc.zork.map.Maps;
+import io.muzoo.ssc.zork.map.rooms.Room;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +16,8 @@ public class Game {
     private GameOutput output = new GameOutput();
 
     private CommandParser commandParser = new CommandParser();
+
+    private Maps maps;
 
     public void run(){
         while(true){
@@ -30,6 +35,9 @@ public class Game {
                 }
             }
         }
+    }
+    public String getExit(){
+        return maps.getExit();
     }
 
     public boolean useCommand(Command eachCommand){
@@ -51,8 +59,16 @@ public class Game {
         this.started = started;
     }
 
-    public int getPlayerInfo(){
+    public int getPlayerHPInfo(){
         return player.HP;
+    }
+
+    public int getPlayerMaxHPInfo(){
+        return player.maxHP;
+    }
+
+    public void createMap(Maps maps){
+        this.maps = maps;
     }
 
 //    public int getMonsterInfo(){
@@ -62,6 +78,27 @@ public class Game {
     public GameOutput getOutput() {
         return output;
     }
+
+    public String getItemName(){
+        return maps.getItemName();
+    }
+
+    public int getItemAttackpower(){
+        return maps.getItemAttackpower();
+    }
+
+//    public void take(String item){
+//        player.take(item);
+//    }
+
+    public Room getRoom(){
+        return maps.getRoom();
+    }
+
+    public void setItemToNull(){
+        maps.setItemToNull();
+    }
+
 
     public void exit() {
         System.exit(0);

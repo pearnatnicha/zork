@@ -2,10 +2,11 @@ package io.muzoo.ssc.zork.map;
 
 import io.muzoo.ssc.zork.map.rooms.Room;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Map1 {
-    List<Room> roomList;
+public class Map1 implements Maps{
+    List<Room> roomList = new ArrayList<>();
     public Map1() {
         roomList.add(new Room("room1"));
         roomList.add(new Room("room2"));
@@ -20,4 +21,28 @@ public class Map1 {
 
     }
 
+    @Override
+    public String getExit(){
+        return roomList.get(0).getExit();
+    }
+
+    @Override
+    public String getItemName(){
+        return roomList.get(0).getItemName();
+    }
+
+    @Override
+    public int getItemAttackpower() {
+        return roomList.get(0).getItemAttackpower();
+    }
+
+    @Override
+    public Room getRoom(){
+        return roomList.get(0);
+    }
+
+    @Override
+    public void setItemToNull() {
+        roomList.get(0).setItemToNull();
+    }
 }

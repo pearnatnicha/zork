@@ -2,6 +2,8 @@ package io.muzoo.ssc.zork.command;
 
 import io.muzoo.ssc.zork.Game;
 import io.muzoo.ssc.zork.Player;
+import io.muzoo.ssc.zork.items.Item;
+import io.muzoo.ssc.zork.items.ItemFactory;
 
 import java.util.List;
 
@@ -23,7 +25,13 @@ public class InfoCommand implements Command{
 
     @Override
     public void execute(Game game, List<String> args) {
-        game.getOutput().println(Integer.toString(game.getPlayerInfo()));
-        game.getOutput().println("room info");
+        game.getOutput().println("Player HP Max: " + Integer.toString(game.getPlayerMaxHPInfo()));
+        game.getOutput().println("Player HP: " + Integer.toString(game.getPlayerHPInfo()));
+        if (game.getItemName() != null){
+            game.getOutput().println("Item Provided : " + game.getItemName() + " with " + game.getItemAttackpower() + " Attack Power");
+        }
+
+        String exit = game.getExit();
+        game.getOutput().println("Doors: " + exit);
     }
 }

@@ -1,6 +1,8 @@
 package io.muzoo.ssc.zork.command;
 
 import io.muzoo.ssc.zork.Game;
+import io.muzoo.ssc.zork.items.Item;
+import io.muzoo.ssc.zork.items.ItemFactory;
 
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class TakeCommand implements Command{
 
     @Override
     public void execute(Game game, List<String> args) {
-        game.getOutput().println("picked item");
+        Item item = ItemFactory.stringToItem(args.get(0));
+        game.player.take(item);
+        game.getOutput().println("picked " + args.get(0));
+        game.setItemToNull();
     }
 }
